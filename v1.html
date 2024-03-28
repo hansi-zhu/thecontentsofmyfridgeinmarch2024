@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>food log</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100%;
+        background-color:rgb(14, 17, 55);
+    }
+    .square {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        transition: transform 5s ease-in-out;
+        filter: grayscale(100%) opacity(10%); 
+    }
+    .square img {
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+    }
+    .circle {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border:solid white 1px;
+        cursor: pointer;
+        background-color: rgb(46, 68, 119);
+        color: rgb(255, 255, 255);
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+        bottom:2vh;
+        font-family: sans-serif;
+    }
+    .circle:hover{
+        background-color: rgb(99, 109, 154);
+    }
+  
+</style>
+</head>
+<body>
+    <div id="container"></div>
+        <div class="circle" id="circle1" >01</div>
+        <div class="circle" id="circle2" style="left: 40px;">02</div>
+        <div class="circle" id="circle3" style="left: 80px;">03</div>
+        <div class="circle" id="circle4" style="left: 120px;">04</div>
+        <div class="circle" id="circle5" style="left: 160px;">05</div>
+        <div class="circle" id="circle6" style="left: 200px;">06</div>
+        <div class="circle" id="circle7" style="left: 240px;">07</div>
+        <div class="circle" id="circle8" style="left: 280px;">08</div>
+        <div class="circle" id="circle9" style="left: 320px;">09</div>
+        <div class="circle" id="circle10" style="left: 360px;">10</div>
+        <div class="circle" id="circle11" style="left: 400px;">11</div>
+        <div class="circle" id="circle12" style="left: 440px;">12</div>
+        <div class="circle" id="circle13" style="left: 480px;">13</div>
+        <div class="circle" id="circle14" style="left: 520px;">14</div>
+        <div class="circle" id="circle15" style="left: 560px;">15</div>
+        <div class="circle" id="circle16" style="left: 600px;">16</div>
+        <div class="circle" id="circle17" style="left: 640px;">17</div>
+        <div class="circle" id="circle18" style="left: 680px;">18</div>
+        <div class="circle" id="circle19" style="left: 720px;">19</div>
+        <div class="circle" id="circle20" style="left: 760px;">20</div>
+        <div class="circle" id="circle21" style="left: 800px;">21</div>
+        <div class="circle" id="circle22" style="left: 840px;">22</div>
+        <div class="circle" id="circle23" style="left: 880px;">23</div>
+        <div class="circle" id="circle24" style="left: 920px;">24</div>
+        <div class="circle" id="circle25" style="left: 960px;">25</div>
+        <div class="circle" id="circle21" style="left: 1000px;">26</div>
+        <div class="circle" id="circle22" style="left: 1040px;">27</div>
+        <div class="circle" id="circle23" style="left: 1080px;">28</div>
+        <div class="circle" id="circle24" style="left: 1120px;">29</div>
+        <div class="circle" id="circle25" style="left: 1160px;">30</div>
+        <div class="circle" id="circle24" style="left: 1200px;">31</div>
+
+    <script>
+        // Function to create a random number between min and max
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // Function to move the squares randomly
+        function moveSquares() {
+            const squares = document.querySelectorAll('.square');
+            squares.forEach(square => {
+                const newX = randomInRange(0, window.innerWidth - square.offsetWidth);
+                const newY = randomInRange(0, window.innerHeight - square.offsetHeight);
+                square.style.transform = `translate(${newX}px, ${newY}px)`;
+            });
+        }
+
+        // Function to handle hover events on circles
+        function handleCircleHover(circleIndex) {
+            const squares = document.querySelectorAll('.square');
+            squares.forEach((square, index) => {
+                if ((circleIndex === 0 && index < 3) ||
+                    (circleIndex === 1 && index >= 3 && index < 5) ||
+                    (circleIndex === 2 && index >= 5 && index < 7) ||
+                    (circleIndex === 3 && index >= 7 && index < 9) ||
+                    (circleIndex === 4 && index >= 9 && index < 11) ||
+                    (circleIndex === 5 && index >= 11)) {
+                    square.style.filter = 'none'; // Restore original colors
+                } else {
+                    square.style.filter = 'grayscale(100%) opacity(20%)'; 
+                }
+            });
+        }
+
+        // Create and append squares with photos to the container
+        const container = document.getElementById('container');
+        const photos = ['svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg', 
+                        'svg/timecapsule-05.svg', 'svg/timecapsule-06.svg', 'svg/timecapsule-07.svg', 
+                        'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg', 
+                        'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg',
+                        'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg',
+                        'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg','svg/timecapsule-05.svg'];
+        for (let i = 0; i < 19; i++) {
+            const square = document.createElement('div');
+            square.classList.add('square');
+            const img = document.createElement('img');
+            img.src = photos[i];
+            square.appendChild(img);
+            container.appendChild(square);
+        }
+
+        // Move squares every 5 seconds
+        moveSquares();
+        setInterval(moveSquares, 5000);
+
+        // Event listeners for circle hover events
+        const circle1 = document.getElementById('circle1');
+        circle1.addEventListener('mouseenter', () => handleCircleHover(0));
+        circle1.addEventListener('mouseleave', () => handleCircleHover(-1));
+
+        const circle2 = document.getElementById('circle2');
+        circle2.addEventListener('mouseenter', () => handleCircleHover(1));
+        circle2.addEventListener('mouseleave', () => handleCircleHover(-1));
+
+        const circle3 = document.getElementById('circle3');
+        circle3.addEventListener('mouseenter', () => handleCircleHover(2));
+        circle3.addEventListener('mouseleave', () => handleCircleHover(-1));
+
+        const circle4 = document.getElementById('circle4');
+        circle4.addEventListener('mouseenter', () => handleCircleHover(3));
+        circle4.addEventListener('mouseleave', () => handleCircleHover(-2));
+
+        const circle5 = document.getElementById('circle5');
+        circle5.addEventListener('mouseenter', () => handleCircleHover(4));
+        circle5.addEventListener('mouseleave', () => handleCircleHover(-1));
+    </script>
+</body>
+</html>
