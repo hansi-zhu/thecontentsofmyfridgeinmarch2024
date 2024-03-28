@@ -72,12 +72,12 @@
         <div class="circle" id="circle23" style="left: 880px;">23</div>
         <div class="circle" id="circle24" style="left: 920px;">24</div>
         <div class="circle" id="circle25" style="left: 960px;">25</div>
-        <div class="circle" id="circle21" style="left: 1000px;">26</div>
-        <div class="circle" id="circle22" style="left: 1040px;">27</div>
-        <div class="circle" id="circle23" style="left: 1080px;">28</div>
-        <div class="circle" id="circle24" style="left: 1120px;">29</div>
-        <div class="circle" id="circle25" style="left: 1160px;">30</div>
-        <div class="circle" id="circle24" style="left: 1200px;">31</div>
+        <div class="circle" id="circle26" style="left: 1000px;">26</div>
+        <div class="circle" id="circle27" style="left: 1040px;">27</div>
+        <div class="circle" id="circle28" style="left: 1080px;">28</div>
+        <div class="circle" id="circle29" style="left: 1120px;">29</div>
+        <div class="circle" id="circle30" style="left: 1160px;">30</div>
+        <div class="circle" id="circle31" style="left: 1200px;">31</div>
 
     <script>
         // Function to create a random number between min and max
@@ -100,12 +100,13 @@
             const squares = document.querySelectorAll('.square');
             squares.forEach((square, index) => {
                 if ((circleIndex === 0 && index < 3) ||
-                    (circleIndex === 1 && index >= 3 && index < 5) ||
-                    (circleIndex === 2 && index >= 5 && index < 7) ||
-                    (circleIndex === 3 && index >= 7 && index < 9) ||
-                    (circleIndex === 4 && index >= 9 && index < 11) ||
-                    (circleIndex === 5 && index >= 11)) {
-                    square.style.filter = 'none'; // Restore original colors
+                    (circleIndex === 1 && index >= 3 && index < 6) ||
+                    (circleIndex === 2 && index >= 6 && index < 9) ||
+                    (circleIndex === 3 && index >= 9 && index < 12) ||
+                    (circleIndex === 4 && index >= 12 && index < 14) ||
+                    (circleIndex === 5 && index >= 14 && index < 17) ||
+                    (circleIndex === 6 && index >= 17)) {
+                    square.style.filter = 'none';
                 } else {
                     square.style.filter = 'grayscale(100%) opacity(20%)'; 
                 }
@@ -119,7 +120,7 @@
                         'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg', 
                         'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg',
                         'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg',
-                        'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg','svg/timecapsule-05.svg'];
+                        'svg/timecapsule-02.svg', 'svg/timecapsule-06.svg', 'svg/timecapsule-07.svg','svg/timecapsule-05.svg'];
         for (let i = 0; i < 19; i++) {
             const square = document.createElement('div');
             square.classList.add('square');
@@ -148,11 +149,19 @@
 
         const circle4 = document.getElementById('circle4');
         circle4.addEventListener('mouseenter', () => handleCircleHover(3));
-        circle4.addEventListener('mouseleave', () => handleCircleHover(-2));
+        circle4.addEventListener('mouseleave', () => handleCircleHover(-1));
 
         const circle5 = document.getElementById('circle5');
         circle5.addEventListener('mouseenter', () => handleCircleHover(4));
         circle5.addEventListener('mouseleave', () => handleCircleHover(-1));
+
+        const circle6 = document.getElementById('circle6');
+        circle6.addEventListener('mouseenter', () => handleCircleHover(5));
+        circle6.addEventListener('mouseleave', () => handleCircleHover(-1));
+
+        const circle7 = document.getElementById('circle7');
+        circle7.addEventListener('mouseenter', () => handleCircleHover(6));
+        circle7.addEventListener('mouseleave', () => handleCircleHover(-1));
     </script>
 </body>
 </html>
