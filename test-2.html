@@ -12,7 +12,19 @@
         height: 100%;
         background-color:rgb(14, 17, 55);
     }
+    #container {
+        position: absolute;
+        left: 5vw;
+        top:25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 28%; /* Adjust to 20% of page width */
+        height: 80%; /* Full height */
+        background-color: rgba(255, 255, 255, 0.133);
+        border-radius: 20px;
 
+    }
     #container2 {
         position: absolute;
         left: 50%;
@@ -78,7 +90,6 @@
         display: flex;
         width: 89vw;
         height:46px;
-        justify-content:center;
         background-color: rgba(176, 176, 176, 0.307);
         padding:3px;
         position: absolute;
@@ -91,7 +102,10 @@
 </style>
 </head>
 <body>
-    <div id="container"></div>
+    <div class="container" id="container"></div>
+    <div class="container" id="container2"></div>
+    <div class="container" id="container3"></div>
+
     <div class="dates">
         <div class="circle" id="circle1" >01</div>
         <div class="circle" id="circle2" >02</div>
@@ -127,54 +141,60 @@
     </div>
     <script>
         // Function to create a random number between min and max
-        function randomInRange(min, max) {
-            return Math.random() * (max - min) + min;
-        }
+function randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+}
 
-        // Function to move the squares randomly
-        function moveSquares() {
-            const squares = document.querySelectorAll('.square');
-            squares.forEach(square => {
-                const newX = randomInRange(0, window.innerWidth - square.offsetWidth);
-                const newY = randomInRange(0, window.innerHeight - square.offsetHeight);
-                square.style.transform = `translate(${newX}px, ${newY}px)`;
-            });
-        }
+// Function to move the squares randomly within specified bounds
+function moveSquares(containerId, maxWidth) {
+    const squares = document.querySelectorAll(`#${containerId} .square`);
+    const minY = 25; // 25px below the top of the page
+    const maxHeight = window.innerHeight - squares[0].offsetHeight;
+    
 
-        // Function to handle hover events on circles
-        function handleCircleHover(circleIndex) {
-            const squares = document.querySelectorAll('.square');
-            squares.forEach((square, index) => {
-                if ((circleIndex === 0 && index < 3) ||
-                    (circleIndex === 1 && index >= 3 && index < 6) ||
-                    (circleIndex === 2 && index >= 6 && index < 9) ||
-                    (circleIndex === 3 && index >= 9 && index < 12) ||
-                    (circleIndex === 4 && index >= 12 && index < 14) ||
-                    (circleIndex === 5 && index >= 14 && index < 17) ||
-                    (circleIndex === 6 && index >= 17)) {
-                    square.style.filter = 'none';
-                } else {
-                    square.style.filter = 'grayscale(100%) opacity(20%)'; 
-                }
-            });
-        }
+    squares.forEach(square => {
+        const newX = randomInRange(0, maxWidth - square.offsetWidth);
+        const newY = randomInRange(0, maxHeight);
+        square.style.transform = `translate(${newX}px, ${newY}px)`;
+    });
+}
 
-        // Create and append squares with photos to the container
-        const container = document.getElementById('container');
-        const photos = ['svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg', 
-                        'svg/timecapsule-05.svg', 'svg/timecapsule-06.svg', 'svg/timecapsule-07.svg', 
-                        'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg', 
-                        'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg',
-                        'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg',
-                        'svg/timecapsule-02.svg', 'svg/timecapsule-06.svg', 'svg/timecapsule-07.svg','svg/timecapsule-05.svg'];
-        for (let i = 0; i < 19; i++) {
-            const square = document.createElement('div');
-            square.classList.add('square');
-            const img = document.createElement('img');
-            img.src = photos[i];
-            square.appendChild(img);
-            container.appendChild(square);
-        }
+// Create and append squares with photos to the container
+function createSquares(containerId, photos, count) {
+    const container = document.getElementById(containerId);
+    const maxWidth = window.innerWidth * 0.2; // 20% of page width
+
+    for (let i = 0; i < count; i++) {
+        const square = document.createElement('div');
+        square.classList.add('square');
+        const img = document.createElement('img');
+        img.src = photos[Math.floor(Math.random() * photos.length)];
+        square.appendChild(img);
+        container.appendChild(square);
+    }
+
+    // Move squares initially and set interval for continuous movement
+    moveSquares(containerId, maxWidth);
+    setInterval(() => moveSquares(containerId, maxWidth), 5000);
+}
+
+// Call createSquares function for both sets of squares
+const photos1 = ['svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg', 
+                'svg/timecapsule-05.svg', 'svg/timecapsule-06.svg', 'svg/timecapsule-07.svg', 
+                'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg', 
+                'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg',
+                'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg',
+                'svg/timecapsule-02.svg', 'svg/timecapsule-06.svg', 'svg/timecapsule-07.svg','svg/timecapsule-05.svg'];
+
+const photos2 = ['svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg', 
+                'svg/timecapsule-05.svg', 'svg/timecapsule-06.svg', 'svg/timecapsule-07.svg', 
+                'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg', 
+                'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg',
+                'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg',
+                'svg/timecapsule-02.svg', 'svg/timecapsule-06.svg', 'svg/timecapsule-07.svg','svg/timecapsule-05.svg'];
+
+createSquares('container', photos1, 19); // First set of squares
+createSquares('smallContainer', photos2, 15); // Second set of squares
 
         // Move squares every 5 seconds
         moveSquares();
