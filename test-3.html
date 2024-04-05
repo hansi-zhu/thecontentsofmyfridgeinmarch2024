@@ -10,7 +10,6 @@
         padding: 0;
         overflow: hidden;
         height: 100%;
-        background-color:rgb(14, 17, 55);
     }
 
     #container2 {
@@ -41,8 +40,8 @@
     }
     .square {
         position: absolute;
-        width: 150px;
-        height: 150px;
+        width: 450px;
+        height: 450px;
         transition: transform 5s ease-in-out;
         filter: grayscale(100%) opacity(10%); 
     }
@@ -145,11 +144,11 @@
         function handleCircleHover(circleIndex) {
             const squares = document.querySelectorAll('.square');
             squares.forEach((square, index) => {
-                if ((circleIndex === 0 && index < 3) ||
-                    (circleIndex === 1 && index >= 3 && index < 6) ||
-                    (circleIndex === 2 && index >= 6 && index < 9) ||
+                if ((circleIndex === 0 && index < 6) ||
+                    (circleIndex === 1 && [2,3,4,5].includes(index)) ||
+                    (circleIndex === 2 && index >= 4 && index < 9) ||
                     (circleIndex === 3 && index >= 9 && index < 12) ||
-                    (circleIndex === 4 && index >= 12 && index < 14) ||
+                    (circleIndex === 4 && index >= 0 && index < 14) ||
                     (circleIndex === 5 && index >= 14 && index < 17) ||
                     (circleIndex === 6 && index >= 17)) {
                     square.style.filter = 'none';
@@ -161,12 +160,10 @@
 
         // Create and append squares with photos to the container
         const container = document.getElementById('container');
-        const photos = ['svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg', 
-                        'svg/timecapsule-05.svg', 'svg/timecapsule-06.svg', 'svg/timecapsule-07.svg', 
-                        'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg', 
-                        'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg',
-                        'svg/timecapsule-02.svg', 'svg/timecapsule-03.svg', 'svg/timecapsule-04.svg',
-                        'svg/timecapsule-02.svg', 'svg/timecapsule-06.svg', 'svg/timecapsule-07.svg','svg/timecapsule-05.svg'];
+        const photos = ['svg/apple.svg', 'svg/banana.svg', 'svg/bokchoy.svg', 
+                        'svg/cake.svg', 'svg/tomato-1.svg', 'svg/tomato-2.svg',
+                        'svg/apple.svg', 'svg/banana.svg', 'svg/bokchoy.svg', 
+                        'svg/cake.svg', 'svg/tomato-1.svg', 'svg/tomato-2.svg'];
         for (let i = 0; i < 19; i++) {
             const square = document.createElement('div');
             square.classList.add('square');
@@ -183,31 +180,24 @@
         // Event listeners for circle hover events
         const circle1 = document.getElementById('circle1');
         circle1.addEventListener('mouseenter', () => handleCircleHover(0));
-        circle1.addEventListener('mouseleave', () => handleCircleHover(-1));
 
         const circle2 = document.getElementById('circle2');
         circle2.addEventListener('mouseenter', () => handleCircleHover(1));
-        circle2.addEventListener('mouseleave', () => handleCircleHover(-1));
 
         const circle3 = document.getElementById('circle3');
         circle3.addEventListener('mouseenter', () => handleCircleHover(2));
-        circle3.addEventListener('mouseleave', () => handleCircleHover(-1));
 
         const circle4 = document.getElementById('circle4');
         circle4.addEventListener('mouseenter', () => handleCircleHover(3));
-        circle4.addEventListener('mouseleave', () => handleCircleHover(-1));
 
         const circle5 = document.getElementById('circle5');
         circle5.addEventListener('mouseenter', () => handleCircleHover(4));
-        circle5.addEventListener('mouseleave', () => handleCircleHover(-1));
 
         const circle6 = document.getElementById('circle6');
         circle6.addEventListener('mouseenter', () => handleCircleHover(5));
-        circle6.addEventListener('mouseleave', () => handleCircleHover(-1));
 
         const circle7 = document.getElementById('circle7');
         circle7.addEventListener('mouseenter', () => handleCircleHover(6));
-        circle7.addEventListener('mouseleave', () => handleCircleHover(-1));
     </script>
 </body>
 </html>
