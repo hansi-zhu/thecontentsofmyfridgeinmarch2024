@@ -16,7 +16,7 @@
         position: absolute;
         width: 450px;
         height: 450px;
-        transition: transform 5s ease-in-out;
+        transition: transform 1s ease-in-out;
         filter: opacity(00%); 
     }
     .square img {
@@ -145,9 +145,9 @@
                     (circleIndex === 26 && index >= 35 && index < 54) ||
                     (circleIndex === 27 && index >= 35 && index < 46) ||
                     (circleIndex === 28 && index >= 35 && index < 54) ||
-                    (circleIndex === 29 && index >= 35 && index < 46) ||
-                    (circleIndex === 30 && index >= 35 && index < 54) ||
-                    (circleIndex === 31 && index >= 54)) {
+                    (circleIndex === 29 && index >= 35 && index < 75) ||
+                    (circleIndex === 30 && index >= 75 && index < 79) ||
+                    (circleIndex === 31 && index >= 75)) {
                     square.style.filter = 'none';
                 } else {
                     square.style.filter = 'opacity(0%)'; 
@@ -182,8 +182,15 @@
                         'svg/apple.svg', 'svg/banana.svg', 'svg/bokchoy.svg', 
                         'svg/cake.svg', 'svg/tomato-1.svg', 'svg/tomato-2.svg',
                         'svg/tomato-1.svg', 'svg/tomato-2.svg', 'svg/tomato-1.svg', 
-                        'svg/tomato-2.svg', 'svg/bokchoy.svg', 'svg/bokchoy.svg'];
-        for (let i = 0; i < 78; i++) {
+                        'svg/tomato-2.svg', 'svg/bokchoy.svg', 'svg/bokchoy.svg',
+                        'svg/egg-1.svg', 'svg/egg-2.svg', 'svg/egg-3.svg',
+                        'svg/egg-4.svg', 'svg/egg-5.svg', 'svg/egg-6.svg',
+                        'svg/egg-7.svg', 'svg/egg-8.svg', 'svg/egg-9.svg',
+                        'svg/egg-10.svg', 'svg/egg-11.svg', 'svg/egg-12.svg',
+                        'svg/napa.svg', 'svg/fish.svg', 'svg/chicken.svg',
+                        'svg/chicken.svg', 'svg/chicken.svg', 'svg/soba.svg',
+                        'svg/soba.svg', 'svg/soba.svg', 'svg/soba.svg'];
+        for (let i = 0; i < 95; i++) {
             const square = document.createElement('div');
             square.classList.add('square');
             const img = document.createElement('img');
