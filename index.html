@@ -44,7 +44,7 @@
         grid-template-rows: 1;
         bottom:2vh;
         position:fixed;
-        display: flex;
+        display: grid;
         width: 89vw;
         justify-content:center;
         padding:3px;
@@ -54,6 +54,26 @@
         border-radius:25px;
         align-items: center;
     }
+    @media screen and (max-width: 1200px){
+.dates{
+grid-template-rows: 1fr 1fr;
+bottom:0.5vh;
+}
+#circle17, #circle18, #circle19, #circle20, #circle21, #circle22, #circle23, #circle24, #circle25, #circle26, #circle27, #circle28, #circle29, #circle30, #circle31{
+    grid-row:2;
+}
+}
+@media screen and (max-width: 640px){
+    .dates{
+grid-template-rows: 1fr 1fr 1fr;
+bottom:0.2vh;
+    #circle12, #circle13, #circle14, #circle15, #circle16{
+        grid-row:2;
+    }
+    #circle23, #circle24, #circle25, #circle26, #circle27, #circle28, #circle29, #circle30, #circle31{
+        grid-row:3;
+    }
+}
   
 </style>
 </head>
