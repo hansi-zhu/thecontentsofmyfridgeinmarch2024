@@ -54,6 +54,22 @@
         border-radius:25px;
         align-items: center;
     }
+    .month, .year{
+        position:fixed;
+        top: 5vh;
+        background-color: rgb(78, 78, 78);
+        color: rgb(255, 255, 255);
+        text-align: center;
+        cursor: pointer;
+        font-family: sans-serif;
+        padding:6px;
+    }
+    .month{
+        left:8.1vw;
+    }
+    .year{
+        right:8.1vw;
+    }
     @media screen and (max-width: 1200px){
 .dates{
 grid-template-rows: 1fr 1fr;
@@ -80,6 +96,8 @@ bottom:0.2vh;
 </head>
 <body>
     <div id="container"></div>
+    <div class="month">March</div>
+    <div class="year">2024</div>
     <div class="dates">
         <div class="circle" id="circle1" >01</div>
         <div class="circle" id="circle2" >02</div>
